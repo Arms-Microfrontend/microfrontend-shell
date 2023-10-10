@@ -64,9 +64,9 @@ function App() {
                   className={`sidebar-item ${item === selectedItem ? 'active' : ''}`}
                   onClick={() => handleItemClick(item)}
                 >
-                  <a href="#" className="sidebar-link">
+                  <span className="sidebar-link">
                     {item.name}
-                  </a>
+                  </span>
                 </li>
               ))}
             </ul>
