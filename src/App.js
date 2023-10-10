@@ -1,30 +1,44 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import "./App.css";
-import resourceLogo from './assets/resource-icon.svg'
+import resourceLogo from "./assets/resource-icon.svg";
 
 function App() {
+  const resourceMgt = process.env.REACT_APP_RESOURCE_MANAGEMENT
+  const loansMgt = process.env.REACT_APP_LOANS_MANAGEMENT;
+
   const sidebarItems = [
     {
       title: "Resource Manager",
       items: [
-        { id: 1, name: 'Project manager', link: 'http://localhost:3001/project-manager' },
-        { id: 2, name: 'Client manager', link: 'http://localhost:3001/client-manager' },
-        { id: 3, name: 'Skill manager', link: 'http://localhost:3001/skill-manager' },
-      ]
+        {
+          id: 1,
+          name: "Project manager",
+          link: `${resourceMgt}project-manager`,
+        },
+        {
+          id: 2,
+          name: "Client manager",
+          link: `${resourceMgt}client-manager`,
+        },
+        {
+          id: 3,
+          name: "Skill manager",
+          link: `${resourceMgt}skill-manager`,
+        },
+      ],
     },
     {
       title: "Loan Manager",
       items: [
-        { id: 1, name: 'Your loans', link: 'http://127.0.0.1:5173/' },
-        { id: 2, name: 'Manage loans', link: 'http://127.0.0.1:5173/' },
-      ]
-    }
+        { id: 1, name: "Your loans", link: `${loansMgt}`, },
+        { id: 2, name: "Manage loans", link: `${loansMgt}` },
+      ],
+    },
   ];
-  
 
   const [selectedItem, setSelectedItem] = useState(null);
   const [openSection, setOpenSection] = useState(null);
-  
+
   const handleItemClick = (item) => {
     setSelectedItem(item);
   };
@@ -48,41 +62,44 @@ function App() {
       </nav>
 
       <div className="main">
-      <div className="sidebar">
-      {sidebarItems.map((section) => (
-        <div key={section.title} className="section">
-          <div className="heading" onClick={() => toggleSection(section.title)}>
-            <img src={resourceLogo} alt="" />
-            <h2>{section.title}</h2>
-          </div>
+        <div className="sidebar">
+          {sidebarItems.map((section) => (
+            <div key={section.title} className="section">
+              <div
+                className="heading"
+                onClick={() => toggleSection(section.title)}
+              >
+                <img src={resourceLogo} alt="" />
+                <h2>{section.title}</h2>
+              </div>
 
-          {openSection === section.title && (
-            <ul className="sidebar-list">
-              {section.items.map((item) => (
-                <li
-                  key={item.id}
-                  className={`sidebar-item ${item === selectedItem ? 'active' : ''}`}
-                  onClick={() => handleItemClick(item)}
-                >
-                  <span className="sidebar-link">
-                    {item.name}
-                  </span>
-                </li>
-              ))}
-            </ul>
-          )}
+              {openSection === section.title && (
+                <ul className="sidebar-list">
+                  {section.items.map((item) => (
+                    <li
+                      key={item.id}
+                      className={`sidebar-item ${
+                        item === selectedItem ? "active" : ""
+                      }`}
+                      onClick={() => handleItemClick(item)}
+                    >
+                      <span className="sidebar-link">{item.name}</span>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
+          ))}
         </div>
-      ))}
-    </div>
-      <div className="microfrontend-iframe">
-        <iframe
-          src={selectedItem ? selectedItem.link : ''}
-          width="100%"
-          height="100%"
-          title="react"
-        ></iframe>
+        <div className="microfrontend-iframe">
+          <iframe
+            src={selectedItem ? selectedItem.link : ""}
+            width="100%"
+            height="100%"
+            title="react"
+          ></iframe>
+        </div>
       </div>
-    </div>
     </div>
   );
 }
