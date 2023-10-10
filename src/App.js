@@ -30,8 +30,8 @@ function App() {
     {
       title: "Loan Manager",
       items: [
-        { id: 1, name: "Your loans", link: `${loansMgt}`, },
-        { id: 2, name: "Manage loans", link: `${loansMgt}` },
+        { id: 1, name: "Your loans", link: `${loansMgt}view-loans`, },
+        { id: 2, name: "Manage loans", link: `${loansMgt}/add-loans` },
       ],
     },
   ];
