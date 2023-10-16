@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import ResourceManager from "./Pages/ResourceManager";
 import LoanManager from "./Pages/LoanManager";
+import ContractManager from "./Pages/ContractManager";
 import "./App.css";
 import resourceLogo from "./assets/resource-icon.svg";
 
@@ -80,12 +81,32 @@ function App() {
                   </ul>
                 )}
               </li>
+
+              <li className="heading">
+              <div className="header">
+                  <img src={resourceLogo} alt="" />
+                  <span className="title" onClick={() => toggleSection("contractManager")}>
+                    Contract Manager
+                  </span>
+                </div>
+                {openSections["contractManager"] && (
+                  <ul className="list">
+                    <li>
+                      <Link to="/contract-manager">Contract Approvals</Link>
+                    </li>
+                    {/* <li>
+                      <Link to="/loan-manager/add-loans">Manage Loans</Link>
+                    </li> */}
+                  </ul>
+                )}
+              </li>
             </ul>
           </div>
           <div className="microfrontend-iframe">
             <Routes>
               <Route path="/resource-manager/*" element={<ResourceManager />} />
               <Route path="/loan-manager/*" element={<LoanManager />} />
+              <Route path="/contract-manager/*" element={<ContractManager />} />
             </Routes>
           </div>
         </div>
