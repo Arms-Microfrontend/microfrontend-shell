@@ -2,7 +2,7 @@ import React from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 
 function LoanManager() {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const location = useLocation();
 
   // Determine the route based on the path
