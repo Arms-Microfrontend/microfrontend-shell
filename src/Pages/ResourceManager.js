@@ -1,19 +1,19 @@
 import React from "react";
-import { useLocation } from "react-router-dom";
+// import { useLocation } from "react-router-dom";
 
 function ResourceManager() {
-  const location = useLocation();
+  // const location = useLocation();
 
   // Determine the route based on the path
-  let route = "";
+  let route = "/resource-manager";
 
-  if (location.pathname === "/resource-manager/project-manager") {
-    route = "project-manager";
-  } else if (location.pathname === "/resource-manager/client-manager") {
-    route = "client-manager";
-  } else if (location.pathname === "/resource-manager/skill-manager") {
-    route = "skill-manager";
-  }
+  // if (location.pathname === "/resource-manager/project-manager") {
+  //   route = "project-manager";
+  // } else if (location.pathname === "/resource-manager/client-manager") {
+  //   route = "client-manager";
+  // } else if (location.pathname === "/resource-manager/skill-manager") {
+  //   route = "skill-manager";
+  // }
 
   // Construct the full URL
   const fullURL = `${process.env.REACT_APP_RESOURCE_MANAGEMENT}${route}`;
